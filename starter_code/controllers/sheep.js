@@ -3,7 +3,24 @@ const router = express.Router();
 
 const Breed = require('../models/breed.js');
 
+ // Get All Sheep
+ router.get('/', async (req, res) => {
 
+    try {
+
+        // Look all the individual sheep by breedId
+        const theHerd = await Sheep.find().populate("breed");
+
+        res.render('sheep/index.ejs',{
+            title: "The Whole Herd",
+            sheep: theHerd
+        });
+    } catch (error) {
+        console.log(error, 'list not found');
+        res.redirect('/');
+    }
+
+ });
 // Shear or Unshear the Sheep
 router.put('/:sheepId/mark/:shearStatus', async (req, res) => {
 
@@ -69,23 +86,6 @@ router.post("/", async (req, res) => {
     res.redirect('/sheep/')
   });
 
- // Get All Sheep
- router.get('/', async (req, res) => {
 
-    try {
-
-        // Look all the individual sheep by breedId
-        const theHerd = await Sheep.find().populate("breed");
-
-        res.render('sheep/index.ejs',{
-            title: "The Whole Herd",
-            sheep: theHerd
-        });
-    } catch (error) {
-        console.log(error);
-        res.redirect('/');
-    }
-
- });
 
 module.exports = router;

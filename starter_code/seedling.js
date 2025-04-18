@@ -1,13 +1,11 @@
 const Sheep = require('./models/sheep');
 const Breed = require('./models/breed');
 
-
 const fs = require('fs');
 const path = require('path');
 const { faker } = require('@faker-js/faker');
 
 const SALT_LENGTH = 12;
-
 
 // Function to check for seeding
 async function isSeeded(){
@@ -24,15 +22,12 @@ async function isSeeded(){
         return true;
 
     }
-
 }
 
 // Do the Seeding
 async function runSeeder(){
     // Check if needed to be seeded
-
     const isDBSeeded = await isSeeded();
-
     if(isDBSeeded && process.argv.indexOf('-reseed') == -1){
         // DB is already seeded, do not reseed
         console.log("Database already seeded")
@@ -40,10 +35,8 @@ async function runSeeder(){
     }else{
         console.log("Starting database seed")
     }
-
     const startTime = Date.now();
-    const dirPath = path.join(__dirname,  'seeddata');
-
+    const dirPath = path.join(__dirname,  'seedData');
     
     console.log("Seeding Breeds")
 

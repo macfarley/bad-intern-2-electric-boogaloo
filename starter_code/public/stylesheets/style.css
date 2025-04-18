@@ -15,3 +15,8 @@
 .bigSheep {
     max-width: 400px;
 }
+
+#navbarNav{
+
+    justify-content: flex-end;
+}
