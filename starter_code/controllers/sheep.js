@@ -1,17 +1,14 @@
 const express = require('express');
 const router = express.Router();
-
+const Sheep = require('../models/sheep.js')
 const Breed = require('../models/breed.js');
 
  // Get All Sheep
  router.get('/', async (req, res) => {
-
     try {
-
         // Look all the individual sheep by breedId
         const theHerd = await Sheep.find().populate("breed");
-
-        res.render('sheep/index.ejs',{
+        res.render('sheep/index.ejs', {
             title: "The Whole Herd",
             sheep: theHerd
         });

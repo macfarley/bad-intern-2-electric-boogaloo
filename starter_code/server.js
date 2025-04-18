@@ -52,12 +52,13 @@ app.get('/', (req, res) => {
 });
 app.use('/auth', authController);
 app.use(isSignedIn);
-app.use('/breed/',breedRouter);
 app.use('/sheep/',sheepRouter);
+app.use('/breed/',breedRouter);
+
 
 
 
 app.listen(port, () => {
-  console.log(`The express app is ready on port ${port}!`);
+  console.log(`The sheeps app is ready on port ${port}!`);
 
 });
